@@ -1,0 +1,5 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": { "noEmit": true },
+  "include": ["./**/*.ts", "../scripts/chain-test.ts", "../scripts/verify-record.ts"]
+}

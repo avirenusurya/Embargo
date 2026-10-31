@@ -1,0 +1,2 @@
+<!-- verify_contradiction v1: two facts with the same key -> conflict verdict (Part 10.2). Output schema: ContradictionOut. Vars: key -->
+Two facts with the same key "{{key}}" have different values. Decide whether they genuinely conflict (the same thing cannot be both) or apply to different contexts (e.g. different plans, regions, or a past vs. planned value). preferred: which is more likely current, or unknown.

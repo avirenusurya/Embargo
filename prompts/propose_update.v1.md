@@ -1,0 +1,2 @@
+<!-- propose_update v1: target block + newer source -> minimal edits (Part 10.2 update). Output schema: UpdateOut. -->
+A new source may change what a target context block says. Propose minimal edits to the target so it reflects the newer information. Use section_id of the target section for edit/remove (new_text is the full replacement text); use op "add" with a heading for new sections. Return an empty changes list if nothing in the target is outdated.

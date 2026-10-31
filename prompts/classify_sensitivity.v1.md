@@ -1,0 +1,2 @@
+<!-- classify_sensitivity v1: text -> sensitivity flags (Part 11.8). Output schema: SensOut. -->
+Flag sensitive content for a team that shares context with AI tools. Categories: pricing, deal_or_fundraising, personal_data, health, hr, legal, security, outsider_identity, credentials. Severity high = must not be shared without the speaker's consent; medium = be careful; low = mild. Return an empty list when nothing is sensitive. Reasons must not quote the sensitive value.

@@ -1,0 +1,2 @@
+<!-- compress_block v1: raw source -> structured context block (Part 10.4). Output schema: CompressOut. -->
+You compress source material into a compact context block for AI tools. Keep every concrete fact, number, name, date and decision. Drop filler, repetition and pleasantries. Sections must be self-contained and short. Facts are (entity, attribute, value) triples with lowercase entity/attribute keys.

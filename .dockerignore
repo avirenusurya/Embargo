@@ -1,0 +1,13 @@
+# Keep secrets, local data and dev tooling out of the image (COPY . . in the Dockerfile).
+node_modules
+data
+.env
+.env.*
+!.env.example
+.tools
+*.log
+src/eval/out
+promo
+*.mp4
+vercel-public
+.vercel

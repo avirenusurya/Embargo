@@ -1,0 +1,13 @@
+node_modules
+data
+.env
+.env.*
+!.env.example
+.tools/
+*.log
+# The promo film and its render pipeline are not part of this repository.
+promo/
+*.mp4
+*.mov
+.vercel
+vercel-public/

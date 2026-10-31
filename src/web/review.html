@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer">
+<title>Review your statements — Embargo</title>
+<meta name="theme-color" content="#0a0a08">
+<link rel="preload" href="/static/assets/fonts/silkscreen_v6_m8JUjfVPf62XiF7kO-i9aAhAfmyi2A.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/assets/brand.css"><link rel="stylesheet" href="/static/assets/ext.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230a0a08'/><rect x='2' y='4' width='12' height='3' fill='%23e8e4d6'/><rect x='2' y='9' width='8' height='3' fill='%23d4f53c'/></svg>">
+</head>
+<body>
+<header class="xnav"><div class="xnav-in">
+  <a class="xlogo" href="/" data-cursor="HOME"><canvas class="warden" data-warden="watch" data-glow="0"></canvas>EMBARGO</a>
+  <span class="xfile"><b>FILE R-01</b>Speaker consent review</span>
+  <span class="pill" id="pill"></span>
+</div></header>
+<main class="ext">
+  <div class="xmeta"><span class="lbl"><b>R-01</b>CONSENT REVIEW</span><span>THE BLACK ARCHIVE / NO ACCOUNT NEEDED</span><span class="tnum" id="clock">IST --:--:--</span></div>
+  <div id="app"><div class="xload"><span>Opening your file</span><span class="bar"></span></div></div>
+  <footer class="xfoot"><span><b>EMBARGO</b> · KEPT BY WARDEN</span><span>Knowledge is not public property.</span></footer>
+</main>
+<script type="module">
+import { boot, refresh, motion } from '/static/assets/brand.js';
+const token = location.pathname.split('/').pop();
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const LABEL = { allowed: ['st-allowed', 'Allowed'], team_only: ['st-team_only', 'Team only'], blocked: ['st-blocked', 'Blocked from AI'] };
+document.getElementById('pill').textContent = 'Single-use link, no account needed';
+const clock = document.getElementById('clock');
+const tick = () => { const d = new Date(Date.now() + (330 + new Date().getTimezoneOffset()) * 60000); clock.textContent = `IST ${d.toTimeString().slice(0, 8)}`; };
+tick(); setInterval(tick, 1000);
+const app = document.getElementById('app');
+const booted = boot({ preloader: false });
+const r = await fetch(`/review/${token}`, { headers: { accept: 'application/json' } });
+const j = await r.json();
+await booted;
+if (!r.ok) {
+  app.innerHTML = `<div class="xgrid solo"><div class="xcopy">
+    <span class="verdict void slam">Link closed</span>
+    <h1 class="px xh" data-reveal="split" data-split="words">This link is no longer active</h1>
+    <p class="lead" data-reveal="up" data-delay=".15">${esc(String(j.message || 'It expired or was already used.').replace(/([^.!?])$/, '$1.'))} Ask the team for a new link if you want to change a decision.</p>
+    <div class="xw sleep" data-reveal="up" data-delay=".25"><canvas class="warden" data-warden="sleep" data-follow="0"></canvas><p><b>Warden</b>Decisions you already made still stand. Each one is a signed record.</p></div>
+  </div></div>`;
+  refresh(app);
+} else {
+  const n = j.statements.length;
+  const choice = Object.fromEntries(j.statements.map((s) => [s.id, s.status === 'held' ? null : s.status]));
+  app.innerHTML = `<div class="xgrid">
+    <div class="xcopy">
+      <span class="lbl" data-reveal="fade"><b>HELD</b>${n === 1 ? 'One statement' : `${n} statements`} awaiting your decision</span>
+      <h1 class="px xh" data-reveal="split" data-split="words">Decide how AI tools may use <span class="acid">what you said.</span></h1>
+      <p class="lead" data-reveal="up" data-delay=".15">Hi <b>${esc(j.person)}</b>. In <b>${esc(j.conversation)}</b>, ${n === 1 ? 'one line you said was' : `${n} lines you said were`} flagged as possibly sensitive. Everything else was allowed automatically.</p>
+      <div class="xw held" data-reveal="up" data-delay=".25"><canvas class="warden" data-warden="held"></canvas><p><b>Warden held ${n === 1 ? 'this line' : 'these lines'}</b>No AI tool reads ${n === 1 ? 'it' : 'them'} until you decide. Allow it, keep it to the team’s own tools, or block it from AI entirely.</p></div>
+      <p class="fine" data-reveal="fade" data-delay=".35">Each decision gets a signed record that proves what you decided and when, without containing your words. This link expires ${new Date(j.expires_at).toLocaleString()}.</p>
+    </div>
+    <div class="xdocs">
+      ${j.statements.map((s, i) => `<article class="card doc paper" data-id="${s.id}" data-reveal="up" data-delay="${(0.1 + i * 0.08).toFixed(2)}">
+        <span class="pin"></span>
+        <div class="dh"><div class="ph">Statement ${i + 1} of ${n}<small>${esc(j.conversation)} · said by ${esc(j.person)}</small></div><span class="did">S-${String(i + 1).padStart(3, '0')}</span></div>
+        <span class="slot"></span>
+        <q><span class="qt">${esc(s.text)}</span></q>
+        <div class="why"><span class="stamp amber">Held</span>${esc((s.reasons || []).join(' · ') || 'Flagged for review')}</div>
+        <div class="choices">${[['allowed', 'Allow', 'AI tools may use it'], ['team_only', 'Team only', 'Only the team’s own tools'], ['blocked', 'Block from AI', 'Never served to any AI']].map(([v, b, d]) => `<button class="choice" data-v="${v}" data-cursor="${b.toUpperCase()}"><b>${b}</b><span>${d}</span></button>`).join('')}</div>
+        <label class="emb">Keep it embargoed until <input type="datetime-local" data-emb> <span>(optional)</span></label>
+      </article>`).join('')}
+      <div class="bar"><span class="cnt" id="count"></span><button class="bt acid lg" id="submit" data-cursor="FILE IT">Submit decisions</button></div>
+    </div>
+  </div>`;
+  const sync = () => {
+    document.querySelectorAll('.card').forEach((el) => {
+      const v = choice[el.dataset.id];
+      el.querySelectorAll('.choice').forEach((c) => c.classList.toggle('on', c.dataset.v === v));
+      if (v) el.dataset.state = v; else delete el.dataset.state;
+      const slot = el.querySelector('.slot');
+      if (slot.dataset.v !== (v ?? '')) { slot.dataset.v = v ?? ''; slot.innerHTML = v ? `<span class="stamp ${LABEL[v][0]}">${LABEL[v][1]}</span>` : ''; }
+    });
+    const left = Object.values(choice).filter((v) => !v).length;
+    const count = document.getElementById('count');
+    count.classList.toggle('done', !left);
+    count.innerHTML = left ? `<b>${left}</b>still to decide` : `<b>${n}</b>All lines decided`;
+    document.getElementById('submit').disabled = left > 0;
+  };
+  document.querySelectorAll('.card').forEach((el) => el.querySelectorAll('.choice').forEach((c) => (c.onclick = () => { choice[el.dataset.id] = c.dataset.v; sync(); })));
+  sync();
+  refresh(app);
+  const submit = document.getElementById('submit');
+  submit.onclick = async () => {
+    submit.innerHTML = '<span class="spinner"></span>Saving';
+    const decisions = j.statements.map((s) => { const v = document.querySelector(`.card[data-id="${s.id}"] [data-emb]`).value; return { statement_id: s.id, status: choice[s.id], embargo_until: v ? new Date(v).toISOString() : null }; });
+    const res = await fetch(`/review/${token}/decisions`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ decisions }) });
+    const out = await res.json();
+    if (!res.ok) { submit.textContent = 'Submit decisions'; alert(out.message); return; }
+    app.innerHTML = `<div class="xgrid">
+      <div class="xcopy">
+        <span class="verdict ok slam"><canvas class="warden" data-warden="watch" data-follow="0" data-glow="0"></canvas>Saved</span>
+        <h1 class="px xh" data-reveal="split" data-split="words">Your decisions <span class="acid">are recorded.</span></h1>
+        <p class="lead" data-reveal="up" data-delay=".15">The team’s AI tools follow them from their next request.</p>
+        <div class="xw" data-reveal="up" data-delay=".25"><canvas class="warden" data-warden="watch"></canvas><p><b>Filed by Warden</b>Each decision is a signed record. Open one to check it yourself.</p></div>
+      </div>
+      <div class="xdocs">
+        <article class="doc paper" data-reveal="up" data-delay=".1">
+          <div class="dh"><div class="ph">Decision receipt<small>${esc(j.conversation)} · ${esc(j.person)}</small></div><span class="did">${out.results.length} filed</span></div>
+          ${out.results.map((x, i) => `<div class="rcpt"><span>Line ${i + 1}</span><span><span class="stamp ${LABEL[x.status][0]}" style="animation-delay:${(0.5 + i * 0.12).toFixed(2)}s">${LABEL[x.status][1]}</span></span><a href="/verify/${x.record_id}" data-cursor="VERIFY">View record →</a></div>`).join('')}
+        </article>
+      </div>
+    </div>`;
+    refresh(app);
+    if (motion.lenis) motion.lenis.scrollTo(0, { immediate: true }); else scrollTo(0, 0);
+  };
+}
+</script>
+</body>
+</html>

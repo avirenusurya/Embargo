@@ -1,0 +1,4452 @@
+{
+  "meta": {
+    "startedAt": "2026-10-30T13:22:28.869Z",
+    "mode": "full",
+    "suites": [
+      "policy",
+      "unit",
+      "retrieval",
+      "sealed",
+      "actions",
+      "detection"
+    ],
+    "phaseMs": {
+      "policy": 493,
+      "unit": 11,
+      "setup": 5597,
+      "detection": 9,
+      "retrieval": 8570,
+      "sealed": 1711,
+      "actions": 2845
+    },
+    "aiMode": "heuristic",
+    "dataDir": "/tmp/emb-eval-1793366548869-247506",
+    "node": "v24.18.0",
+    "rounds": 3,
+    "policyCases": 200000,
+    "finishedAt": "2026-10-30T13:22:49.947Z",
+    "durationMs": 21079
+  },
+  "logs": {
+    "warn": 0,
+    "error": 0,
+    "samples": []
+  },
+  "policy": {
+    "random": {
+      "cases": 200000,
+      "served": 1216,
+      "violations": 0
+    },
+    "boundary": {
+      "cases": 100000,
+      "served": 29293,
+      "violations": 0
+    },
+    "violations": 0,
+    "examples": [],
+    "spec": {
+      "looser": 0,
+      "stricter": 0,
+      "formDiff": 0,
+      "stricterBy": {},
+      "looserBy": {}
+    },
+    "ms": 493
+  },
+  "unit": [
+    {
+      "name": "answer check unit: verbatim leaks caught",
+      "ok": true,
+      "detail": "5/5 caught"
+    },
+    {
+      "name": "answer check unit: minimal answers not refused",
+      "ok": true,
+      "detail": "0/4 refused"
+    },
+    {
+      "name": "sensitivity unit (heuristic layer, high-severity holds)",
+      "ok": true,
+      "detail": "precision 1.00, recall 1.00 on 18 lines incl. Hinglish (gate: recall ≥ 0.8)"
+    },
+    {
+      "name": "facts unit: same key across phrasings",
+      "ok": true,
+      "detail": "[[\"launch\",\"price\",\"₹499/month\"],[\"launch\",\"price\",\"₹599/month\"]]"
+    }
+  ],
+  "setup": {
+    "warnings": [],
+    "lint": [],
+    "setupMs": 5596
+  },
+  "detection": {
+    "sensitivity": {
+      "lines": 25,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "tn": 20,
+      "precision": 1,
+      "recall": 1,
+      "misses": [],
+      "falseHolds": [],
+      "alignmentIssues": []
+    },
+    "contradiction": {
+      "seeded": 3,
+      "detected": 3,
+      "recall": 1,
+      "suggestions": 3,
+      "matchingSeeded": 3,
+      "precision": 1,
+      "missed": [],
+      "extra": []
+    }
+  },
+  "retrieval": {
+    "queries": 92,
+    "withRelevant": 81,
+    "atBudget": {
+      "p1": 0.07407407407407407,
+      "p3": 0.34979423868312726,
+      "p5": 0.23456790123456764,
+      "r3": 0.8641975308641975,
+      "r5": 0.9567901234567902,
+      "mrr": 0.5080246913580246,
+      "rprec": 0.17901234567901234,
+      "setP": 0.4144380311046977,
+      "setR": 0.9567901234567902,
+      "setPnoPin": 0.6720458553791888,
+      "returned": 3.5185185185185186,
+      "ideal3": 0.41975308641975306
+    },
+    "atTight": {
+      "p1": 0.07894736842105263,
+      "p3": 0.35087719298245584,
+      "p5": 0.23421052631578926,
+      "r3": 0.875,
+      "r5": 0.9671052631578947,
+      "mrr": 0.5125,
+      "rprec": 0.17763157894736842,
+      "setP": 0.41526258828890394,
+      "setR": 0.9671052631578947,
+      "setPnoPin": 0.6713032581453635,
+      "returned": 3.5,
+      "ideal3": 0.4122807017543857
+    },
+    "noAnswer": {
+      "queries": 11,
+      "meanBlocksReturned": 3.3636363636363638,
+      "meanBlocksReturnedExPinned": 2.6363636363636362
+    },
+    "byRequester": {
+      "dev": {
+        "queries": 61,
+        "p1": 0.03278688524590164,
+        "p3": 0.3442622950819671,
+        "p5": 0.23606557377049167,
+        "r3": 0.8442622950819673,
+        "r5": 0.9590163934426229,
+        "mrr": 0.4806010928961748,
+        "rprec": 0.13114754098360656,
+        "setP": 0.3948548719040521,
+        "setR": 0.9590163934426229,
+        "setPnoPin": 0.6732630757220921,
+        "returned": 3.6721311475409837,
+        "ideal3": 0.42076502732240423
+      },
+      "founder": {
+        "queries": 6,
+        "p1": 0,
+        "p3": 0.3333333333333333,
+        "p5": 0.23333333333333336,
+        "r3": 0.8333333333333334,
+        "r5": 0.9166666666666666,
+        "mrr": 0.5,
+        "rprec": 0.16666666666666666,
+        "setP": 0.3527777777777778,
+        "setR": 0.9166666666666666,
+        "setPnoPin": 0.575,
+        "returned": 3.8333333333333335,
+        "ideal3": 0.4444444444444444
+      },
+      "cursor": {
+        "queries": 4,
+        "p1": 0,
+        "p3": 0.41666666666666663,
+        "p5": 0.25,
+        "r3": 0.875,
+        "r5": 0.875,
+        "mrr": 0.5,
+        "rprec": 0.25,
+        "setP": 0.425,
+        "setR": 0.875,
+        "setPnoPin": 0.7291666666666666,
+        "returned": 3.25,
+        "ideal3": 0.49999999999999994
+      },
+      "contractor": {
+        "queries": 5,
+        "p1": 0,
+        "p3": 0.39999999999999997,
+        "p5": 0.24,
+        "r3": 1,
+        "r5": 1,
+        "mrr": 0.5,
+        "rprec": 0.1,
+        "setP": 0.4,
+        "setR": 1,
+        "setPnoPin": 0.6666666666666666,
+        "returned": 3.2,
+        "ideal3": 0.39999999999999997
+      },
+      "partner": {
+        "queries": 5,
+        "p1": 0.8,
+        "p3": 0.3333333333333333,
+        "p5": 0.2,
+        "r3": 1,
+        "r5": 1,
+        "mrr": 0.8666666666666668,
+        "rprec": 0.8,
+        "setP": 0.7333333333333333,
+        "setR": 1,
+        "setPnoPin": 0.7333333333333333,
+        "returned": 1.8,
+        "ideal3": 0.3333333333333333
+      }
+    },
+    "contradiction": {
+      "queries": 6,
+      "withPairReturned": 6,
+      "warned": 6
+    },
+    "perQuery": [
+      {
+        "id": "q01",
+        "who": "dev",
+        "task": "Add a pricing page for the Pro plan",
+        "budget": 2000,
+        "relevant": [
+          "pricing",
+          "standup"
+        ],
+        "returned": [
+          "product",
+          "pricing",
+          "pricing_exp",
+          "beta_feedback",
+          "refund_policy"
+        ],
+        "tokens": 431,
+        "original": 344,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 0.5,
+        "rr": 0.5,
+        "setP": 0.2,
+        "setR": 0.5,
+        "tight": [
+          "product",
+          "pricing",
+          "pricing_exp",
+          "beta_feedback",
+          "refund_policy"
+        ],
+        "tightP": 0.2,
+        "tightR": 0.5
+      },
+      {
+        "id": "q02",
+        "who": "dev",
+        "task": "What is the launch price and is there an annual discount?",
+        "budget": 2000,
+        "relevant": [
+          "pricing",
+          "standup"
+        ],
+        "returned": [
+          "product",
+          "pricing",
+          "launch",
+          "marketing_cal",
+          "standup"
+        ],
+        "tokens": 400,
+        "original": 347,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.4,
+        "setR": 1,
+        "tight": [
+          "product",
+          "pricing",
+          "launch",
+          "marketing_cal",
+          "standup"
+        ],
+        "tightP": 0.4,
+        "tightR": 1
+      },
+      {
+        "id": "q03",
+        "who": "dev",
+        "task": "Write the deploy steps for a hotfix release",
+        "budget": 2000,
+        "relevant": [
+          "deploy"
+        ],
+        "returned": [
+          "product",
+          "deploy",
+          "mobile"
+        ],
+        "tokens": 335,
+        "original": 334,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "deploy",
+          "mobile"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q04",
+        "who": "dev",
+        "task": "How do we roll back a bad database migration?",
+        "budget": 2000,
+        "relevant": [
+          "deploy"
+        ],
+        "returned": [
+          "product",
+          "deploy"
+        ],
+        "tokens": 210,
+        "original": 241,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "deploy"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q05",
+        "who": "dev",
+        "task": "Set up a local development environment for the backend",
+        "budget": 2000,
+        "relevant": [
+          "techstack",
+          "onboarding_eng"
+        ],
+        "returned": [
+          "product",
+          "onboarding_eng",
+          "techstack",
+          "hiring_plan"
+        ],
+        "tokens": 312,
+        "original": 385,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "onboarding_eng",
+          "techstack",
+          "hiring_plan"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q06",
+        "who": "dev",
+        "task": "Which database and web framework does the backend use?",
+        "budget": 2000,
+        "relevant": [
+          "techstack"
+        ],
+        "returned": [
+          "product",
+          "techstack",
+          "hiring_plan"
+        ],
+        "tokens": 317,
+        "original": 296,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "techstack",
+          "hiring_plan"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q07",
+        "who": "dev",
+        "task": "Who do I page when production is down at night?",
+        "budget": 2000,
+        "relevant": [
+          "oncall",
+          "escalations"
+        ],
+        "returned": [
+          "product",
+          "api",
+          "office",
+          "oncall",
+          "security_overview",
+          "pricing_exp",
+          "deploy"
+        ],
+        "tokens": 451,
+        "original": 719,
+        "withheld": 44,
+        "more": false,
+        "p3": 0,
+        "r5": 0.5,
+        "rr": 0.25,
+        "setP": 0.14285714285714285,
+        "setR": 0.5,
+        "tight": [
+          "product",
+          "api",
+          "office",
+          "oncall",
+          "security_overview",
+          "pricing_exp",
+          "deploy"
+        ],
+        "tightP": 0.14285714285714285,
+        "tightR": 0.5
+      },
+      {
+        "id": "q08",
+        "who": "dev",
+        "task": "Define the severity levels for an incident report",
+        "budget": 2000,
+        "relevant": [
+          "oncall"
+        ],
+        "returned": [
+          "product",
+          "oncall"
+        ],
+        "tokens": 216,
+        "original": 231,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "oncall"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q09",
+        "who": "dev",
+        "task": "Document how pagination works in the public REST API",
+        "budget": 2000,
+        "relevant": [
+          "api"
+        ],
+        "returned": [
+          "product",
+          "api",
+          "oncall"
+        ],
+        "tokens": 345,
+        "original": 327,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "api",
+          "oncall"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q10",
+        "who": "dev",
+        "task": "How do API clients authenticate with a token?",
+        "budget": 2000,
+        "relevant": [
+          "api"
+        ],
+        "returned": [
+          "product",
+          "api"
+        ],
+        "tokens": 195,
+        "original": 200,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "api"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q11",
+        "who": "dev",
+        "task": "Prepare the TestFlight release for the iOS app",
+        "budget": 2000,
+        "relevant": [
+          "mobile"
+        ],
+        "returned": [
+          "product",
+          "mobile"
+        ],
+        "tokens": 230,
+        "original": 197,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "mobile"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q12",
+        "who": "dev",
+        "task": "What staged rollout percentage do we start with on Google Play?",
+        "budget": 2000,
+        "relevant": [
+          "mobile"
+        ],
+        "returned": [
+          "product",
+          "mobile"
+        ],
+        "tokens": 207,
+        "original": 197,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "mobile"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q13",
+        "who": "dev",
+        "task": "Draft a tweet announcing the launch date",
+        "budget": 2000,
+        "relevant": [
+          "launch",
+          "marketing_cal"
+        ],
+        "returned": [
+          "product",
+          "launch",
+          "marketing_cal",
+          "pricing"
+        ],
+        "tokens": 360,
+        "original": 266,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "launch",
+          "marketing_cal",
+          "pricing"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q14",
+        "who": "dev",
+        "task": "Which channels will we announce the launch on?",
+        "budget": 2000,
+        "relevant": [
+          "launch"
+        ],
+        "returned": [
+          "product",
+          "launch",
+          "marketing_cal",
+          "pricing"
+        ],
+        "tokens": 382,
+        "original": 266,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.25,
+        "setR": 1,
+        "tight": [
+          "product",
+          "launch",
+          "marketing_cal",
+          "pricing"
+        ],
+        "tightP": 0.25,
+        "tightR": 1
+      },
+      {
+        "id": "q15",
+        "who": "dev",
+        "task": "Plan the webinar schedule for December",
+        "budget": 2000,
+        "relevant": [
+          "marketing_cal"
+        ],
+        "returned": [
+          "product",
+          "marketing_cal"
+        ],
+        "tokens": 260,
+        "original": 170,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "marketing_cal"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q16",
+        "who": "dev",
+        "task": "Summarize what beta users said about offline mode",
+        "budget": 2000,
+        "relevant": [
+          "beta_feedback"
+        ],
+        "returned": [
+          "product",
+          "launch",
+          "help_offline",
+          "beta_feedback",
+          "roadmap",
+          "allhands",
+          "board_deck",
+          "standup"
+        ],
+        "tokens": 467,
+        "original": 716,
+        "withheld": 44,
+        "more": false,
+        "p3": 0,
+        "r5": 1,
+        "rr": 0.25,
+        "setP": 0.125,
+        "setR": 1,
+        "tight": [
+          "product",
+          "launch",
+          "help_offline",
+          "beta_feedback",
+          "roadmap",
+          "allhands",
+          "board_deck",
+          "standup"
+        ],
+        "tightP": 0.125,
+        "tightR": 1
+      },
+      {
+        "id": "q17",
+        "who": "dev",
+        "task": "What features are on the Q4 product roadmap?",
+        "budget": 2000,
+        "relevant": [
+          "roadmap"
+        ],
+        "returned": [
+          "product",
+          "roadmap"
+        ],
+        "tokens": 302,
+        "original": 213,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "roadmap"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q18",
+        "who": "dev",
+        "task": "When does offline mode ship on iOS and Android?",
+        "budget": 2000,
+        "relevant": [
+          "roadmap"
+        ],
+        "returned": [
+          "product",
+          "roadmap",
+          "help_offline"
+        ],
+        "tokens": 269,
+        "original": 274,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "roadmap",
+          "help_offline"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q19",
+        "who": "dev",
+        "task": "Use the brand colors and tone in a landing page hero section",
+        "budget": 2000,
+        "relevant": [
+          "brand"
+        ],
+        "returned": [
+          "product",
+          "brand"
+        ],
+        "tokens": 278,
+        "original": 208,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "brand"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q20",
+        "who": "dev",
+        "task": "Which words should marketing copy avoid?",
+        "budget": 2000,
+        "relevant": [
+          "brand"
+        ],
+        "returned": [
+          "product",
+          "brand"
+        ],
+        "tokens": 200,
+        "original": 208,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "brand"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q21",
+        "who": "dev",
+        "task": "What spacing scale and fonts does the design system use?",
+        "budget": 2000,
+        "relevant": [
+          "design_system"
+        ],
+        "returned": [
+          "product",
+          "design_system"
+        ],
+        "tokens": 295,
+        "original": 210,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "design_system"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q22",
+        "who": "dev",
+        "task": "Describe our ideal customer and buyer",
+        "budget": 2000,
+        "relevant": [
+          "icp"
+        ],
+        "returned": [
+          "product",
+          "icp"
+        ],
+        "tokens": 313,
+        "original": 183,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "icp"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q23",
+        "who": "dev",
+        "task": "Write discovery questions for a first sales call",
+        "budget": 2000,
+        "relevant": [
+          "sales_playbook"
+        ],
+        "returned": [
+          "product",
+          "support_sla",
+          "sales_playbook",
+          "allhands",
+          "brand",
+          "partner_terms",
+          "support_handbook",
+          "initech_call"
+        ],
+        "tokens": 373,
+        "original": 803,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.3333333333333333,
+        "setP": 0.125,
+        "setR": 1,
+        "tight": [
+          "product",
+          "support_sla",
+          "sales_playbook",
+          "allhands",
+          "brand",
+          "partner_terms",
+          "support_handbook",
+          "initech_call"
+        ],
+        "tightP": 0.125,
+        "tightR": 1
+      },
+      {
+        "id": "q24",
+        "who": "dev",
+        "task": "How should sales answer the objection that a prospect already uses Notion?",
+        "budget": 2000,
+        "relevant": [
+          "sales_playbook"
+        ],
+        "returned": [
+          "product",
+          "sales_playbook",
+          "initech_call"
+        ],
+        "tokens": 239,
+        "original": 370,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "sales_playbook",
+          "initech_call"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q25",
+        "who": "dev",
+        "task": "What does Initech need before they renew?",
+        "budget": 2000,
+        "relevant": [
+          "initech_call"
+        ],
+        "returned": [
+          "product",
+          "initech_call"
+        ],
+        "tokens": 186,
+        "original": 255,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "initech_call"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q26",
+        "who": "dev",
+        "task": "When does Okta SSO support ship?",
+        "budget": 2000,
+        "relevant": [
+          "initech_call",
+          "roadmap"
+        ],
+        "returned": [
+          "product",
+          "roadmap",
+          "initech_call"
+        ],
+        "tokens": 222,
+        "original": 364,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.6666666666666666,
+        "setR": 1,
+        "tight": [
+          "product",
+          "roadmap",
+          "initech_call"
+        ],
+        "tightP": 0.6666666666666666,
+        "tightR": 1
+      },
+      {
+        "id": "q27",
+        "who": "dev",
+        "task": "What did Umbrella Health ask for in the pilot call?",
+        "budget": 2000,
+        "relevant": [
+          "umbrella_call"
+        ],
+        "returned": [
+          "product",
+          "umbrella_call"
+        ],
+        "tokens": 186,
+        "original": 221,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "umbrella_call"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q28",
+        "who": "dev",
+        "task": "When does the Umbrella Health pilot start?",
+        "budget": 2000,
+        "relevant": [
+          "umbrella_call"
+        ],
+        "returned": [
+          "product",
+          "umbrella_call"
+        ],
+        "tokens": 206,
+        "original": 221,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "umbrella_call"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q29",
+        "who": "dev",
+        "task": "What did Rohan say in the Tuesday standup?",
+        "budget": 2000,
+        "relevant": [
+          "standup"
+        ],
+        "returned": [
+          "product",
+          "escalations",
+          "allhands",
+          "initech_call",
+          "standup"
+        ],
+        "tokens": 331,
+        "original": 540,
+        "withheld": 44,
+        "more": false,
+        "p3": 0,
+        "r5": 1,
+        "rr": 0.2,
+        "setP": 0.2,
+        "setR": 1,
+        "tight": [
+          "product",
+          "escalations",
+          "allhands",
+          "initech_call",
+          "standup"
+        ],
+        "tightP": 0.2,
+        "tightR": 1
+      },
+      {
+        "id": "q30",
+        "who": "dev",
+        "task": "What is causing the flaky export test?",
+        "budget": 2000,
+        "relevant": [
+          "standup"
+        ],
+        "returned": [
+          "product",
+          "standup"
+        ],
+        "tokens": 187,
+        "original": 185,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "standup"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q31",
+        "who": "dev",
+        "task": "When does the Globex connector go live?",
+        "budget": 2000,
+        "relevant": [
+          "globex_sync"
+        ],
+        "returned": [
+          "product",
+          "globex_sync"
+        ],
+        "tokens": 188,
+        "original": 211,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "globex_sync"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q32",
+        "who": "dev",
+        "task": "Which webhook events does the Globex integration subscribe to?",
+        "budget": 2000,
+        "relevant": [
+          "partner_api",
+          "globex_sync"
+        ],
+        "returned": [
+          "product",
+          "partner_api"
+        ],
+        "tokens": 204,
+        "original": 192,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 0.5,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 0.5,
+        "tight": [
+          "product",
+          "partner_api"
+        ],
+        "tightP": 0.5,
+        "tightR": 0.5
+      },
+      {
+        "id": "q33",
+        "who": "dev",
+        "task": "Answer a partner question about webhook retries and ordering",
+        "budget": 2000,
+        "relevant": [
+          "integration_faq"
+        ],
+        "returned": [
+          "product",
+          "integration_faq",
+          "partner_api"
+        ],
+        "tokens": 311,
+        "original": 272,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "integration_faq",
+          "partner_api"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q34",
+        "who": "dev",
+        "task": "How many backend engineers are we hiring in Q1?",
+        "budget": 2000,
+        "relevant": [
+          "hiring_plan",
+          "board_deck"
+        ],
+        "returned": [
+          "product",
+          "hiring_plan",
+          "board_deck"
+        ],
+        "tokens": 230,
+        "original": 268,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.6666666666666666,
+        "setR": 1,
+        "tight": [
+          "product",
+          "hiring_plan",
+          "board_deck"
+        ],
+        "tightP": 0.6666666666666666,
+        "tightR": 1
+      },
+      {
+        "id": "q35",
+        "who": "dev",
+        "task": "Describe the interview loop for a backend candidate",
+        "budget": 2000,
+        "relevant": [
+          "hiring_plan"
+        ],
+        "returned": [
+          "product",
+          "hiring_plan"
+        ],
+        "tokens": 217,
+        "original": 190,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "hiring_plan"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q36",
+        "who": "dev",
+        "task": "How many days of paid leave do employees get?",
+        "budget": 2000,
+        "relevant": [
+          "leave_policy"
+        ],
+        "returned": [
+          "product",
+          "leave_policy"
+        ],
+        "tokens": 270,
+        "original": 175,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "leave_policy"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q37",
+        "who": "dev",
+        "task": "What is the refund window for monthly plans?",
+        "budget": 2000,
+        "relevant": [
+          "refund_policy"
+        ],
+        "returned": [
+          "product",
+          "refund_policy"
+        ],
+        "tokens": 268,
+        "original": 147,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "refund_policy"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q38",
+        "who": "dev",
+        "task": "Reply to a customer asking about first response times",
+        "budget": 2000,
+        "relevant": [
+          "support_sla",
+          "support_handbook"
+        ],
+        "returned": [
+          "product",
+          "support_sla",
+          "support_handbook"
+        ],
+        "tokens": 340,
+        "original": 228,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.6666666666666666,
+        "setR": 1,
+        "tight": [
+          "product",
+          "support_sla",
+          "support_handbook"
+        ],
+        "tightP": 0.6666666666666666,
+        "tightR": 1
+      },
+      {
+        "id": "q39",
+        "who": "dev",
+        "task": "Write a reply to a customer refund request",
+        "budget": 2000,
+        "relevant": [
+          "support_macros",
+          "refund_policy"
+        ],
+        "returned": [
+          "product",
+          "refund_policy",
+          "support_macros",
+          "security_overview"
+        ],
+        "tokens": 374,
+        "original": 331,
+        "withheld": 40,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "refund_policy",
+          "support_macros",
+          "security_overview"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q40",
+        "who": "dev",
+        "task": "Write a reply to a customer refund request",
+        "budget": 2000,
+        "relevant": [
+          "refund_policy"
+        ],
+        "returned": [
+          "product",
+          "refund_policy",
+          "security_overview",
+          "escalations",
+          "api",
+          "icp"
+        ],
+        "tokens": 437,
+        "original": 464,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.16666666666666666,
+        "setR": 1,
+        "tight": [
+          "product",
+          "refund_policy",
+          "security_overview",
+          "escalations",
+          "api",
+          "icp"
+        ],
+        "tightP": 0.16666666666666666,
+        "tightR": 1
+      },
+      {
+        "id": "q41",
+        "who": "dev",
+        "task": "Reply to a customer whose Markdown export failed",
+        "budget": 2000,
+        "relevant": [
+          "support_macros",
+          "help_export"
+        ],
+        "returned": [
+          "product",
+          "help_export",
+          "support_macros"
+        ],
+        "tokens": 289,
+        "original": 243,
+        "withheld": 40,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.6666666666666666,
+        "setR": 1,
+        "tight": [
+          "product",
+          "help_export",
+          "support_macros"
+        ],
+        "tightP": 0.6666666666666666,
+        "tightR": 1
+      },
+      {
+        "id": "q42",
+        "who": "dev",
+        "task": "What security certifications can we mention to customers?",
+        "budget": 2000,
+        "relevant": [
+          "security_overview"
+        ],
+        "returned": [
+          "product",
+          "security_overview",
+          "escalations",
+          "icp"
+        ],
+        "tokens": 381,
+        "original": 325,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.25,
+        "setR": 1,
+        "tight": [
+          "product",
+          "security_overview",
+          "escalations",
+          "icp"
+        ],
+        "tightP": 0.25,
+        "tightR": 1
+      },
+      {
+        "id": "q43",
+        "who": "dev",
+        "task": "Fill in a customer security questionnaire about encryption at rest",
+        "budget": 2000,
+        "relevant": [
+          "security_overview"
+        ],
+        "returned": [
+          "product",
+          "security_overview",
+          "escalations",
+          "initech_call"
+        ],
+        "tokens": 327,
+        "original": 397,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.25,
+        "setR": 1,
+        "tight": [
+          "product",
+          "security_overview",
+          "escalations",
+          "initech_call"
+        ],
+        "tightP": 0.25,
+        "tightR": 1
+      },
+      {
+        "id": "q44",
+        "who": "dev",
+        "task": "What is the API rate limit per key?",
+        "budget": 2000,
+        "relevant": [
+          "api"
+        ],
+        "returned": [
+          "product",
+          "okrs",
+          "partner_api",
+          "api",
+          "globex_sync"
+        ],
+        "tokens": 308,
+        "original": 479,
+        "withheld": 44,
+        "more": false,
+        "p3": 0,
+        "r5": 1,
+        "rr": 0.25,
+        "setP": 0.2,
+        "setR": 1,
+        "tight": [
+          "product",
+          "okrs",
+          "partner_api",
+          "api",
+          "globex_sync"
+        ],
+        "tightP": 0.2,
+        "tightR": 1
+      },
+      {
+        "id": "q45",
+        "who": "dev",
+        "task": "Summarize the pentest findings for the board",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "product",
+          "board_deck",
+          "globex_sync"
+        ],
+        "tokens": 304,
+        "original": 289,
+        "withheld": 44,
+        "more": false
+      },
+      {
+        "id": "q46",
+        "who": "dev",
+        "task": "What are the salary bands for senior and staff engineers?",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "product",
+          "board_deck",
+          "icp",
+          "oncall",
+          "hiring_plan",
+          "allhands",
+          "escalations",
+          "security_overview",
+          "support_handbook",
+          "globex_sync"
+        ],
+        "tokens": 471,
+        "original": 950,
+        "withheld": 44,
+        "more": false
+      },
+      {
+        "id": "q47",
+        "who": "dev",
+        "task": "What did we discuss in the October board meeting?",
+        "budget": 2000,
+        "relevant": [
+          "board_deck"
+        ],
+        "returned": [
+          "product",
+          "board_deck",
+          "pricing"
+        ],
+        "tokens": 326,
+        "original": 224,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "board_deck",
+          "pricing"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q48",
+        "who": "dev",
+        "task": "What are this quarter's company OKRs?",
+        "budget": 2000,
+        "relevant": [
+          "okrs"
+        ],
+        "returned": [
+          "product",
+          "partner_terms",
+          "support_handbook",
+          "okrs",
+          "board_deck",
+          "office",
+          "brand"
+        ],
+        "tokens": 601,
+        "original": 573,
+        "withheld": 44,
+        "more": false,
+        "p3": 0,
+        "r5": 1,
+        "rr": 0.25,
+        "setP": 0.14285714285714285,
+        "setR": 1,
+        "tight": [
+          "product",
+          "partner_terms",
+          "support_handbook",
+          "okrs",
+          "board_deck",
+          "office",
+          "brand"
+        ],
+        "tightP": 0.14285714285714285,
+        "tightR": 1
+      },
+      {
+        "id": "q49",
+        "who": "dev",
+        "task": "Where is the Bengaluru office and what is the hotel budget?",
+        "budget": 2000,
+        "relevant": [
+          "office"
+        ],
+        "returned": [
+          "product",
+          "office"
+        ],
+        "tokens": 260,
+        "original": 185,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "office"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q50",
+        "who": "dev",
+        "task": "Draft the launch press release",
+        "budget": 2000,
+        "relevant": [
+          "launch",
+          "marketing_cal"
+        ],
+        "returned": [
+          "product",
+          "mobile",
+          "launch",
+          "marketing_cal",
+          "pricing",
+          "standup"
+        ],
+        "tokens": 489,
+        "original": 440,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.3333333333333333,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "mobile",
+          "launch",
+          "marketing_cal",
+          "pricing",
+          "standup"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q51",
+        "who": "dev",
+        "task": "Is there a Diwali promo code we can give customers?",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "product",
+          "escalations",
+          "security_overview",
+          "icp",
+          "design_system",
+          "support_handbook"
+        ],
+        "tokens": 404,
+        "original": 503,
+        "withheld": 44,
+        "more": false
+      },
+      {
+        "id": "q52",
+        "who": "dev",
+        "task": "What was the monthly burn in the August investor update?",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "product",
+          "api",
+          "refund_policy",
+          "globex_sync"
+        ],
+        "tokens": 288,
+        "original": 350,
+        "withheld": 44,
+        "more": false
+      },
+      {
+        "id": "q53",
+        "who": "dev",
+        "task": "What was the theme of the Q2 roadmap?",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "product",
+          "roadmap",
+          "techstack"
+        ],
+        "tokens": 345,
+        "original": 319,
+        "withheld": 44,
+        "more": false
+      },
+      {
+        "id": "q54",
+        "who": "dev",
+        "task": "Write a blog post about why we built Acme Notes",
+        "budget": 2000,
+        "relevant": [
+          "product"
+        ],
+        "returned": [
+          "product",
+          "help_export",
+          "sales_playbook",
+          "mobile",
+          "oncall",
+          "partner_api",
+          "globex_sync",
+          "initech_call",
+          "umbrella_call"
+        ],
+        "tokens": 388,
+        "original": 950,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 1,
+        "setP": 0.1111111111111111,
+        "setR": 1,
+        "tight": [
+          "product",
+          "help_export",
+          "sales_playbook",
+          "mobile",
+          "oncall",
+          "partner_api",
+          "globex_sync",
+          "initech_call",
+          "umbrella_call"
+        ],
+        "tightP": 0.1111111111111111,
+        "tightR": 1
+      },
+      {
+        "id": "q55",
+        "who": "dev",
+        "task": "What is the fundraising status and valuation of the seed round?",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "product",
+          "api",
+          "partner_terms"
+        ],
+        "tokens": 233,
+        "original": 250,
+        "withheld": 44,
+        "more": false
+      },
+      {
+        "id": "q56",
+        "who": "dev",
+        "task": "Summarize Kabir's performance review",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "product",
+          "standup"
+        ],
+        "tokens": 182,
+        "original": 185,
+        "withheld": 44,
+        "more": false
+      },
+      {
+        "id": "q57",
+        "who": "dev",
+        "task": "What pricing experiments did we run on the landing page?",
+        "budget": 2000,
+        "relevant": [
+          "pricing_exp"
+        ],
+        "returned": [
+          "product",
+          "pricing_exp"
+        ],
+        "tokens": 318,
+        "original": 185,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "pricing_exp"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q58",
+        "who": "dev",
+        "task": "Are we in acquisition talks with anyone?",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "product",
+          "beta_feedback"
+        ],
+        "tokens": 211,
+        "original": 178,
+        "withheld": 44,
+        "more": false
+      },
+      {
+        "id": "q59",
+        "who": "dev",
+        "task": "What revenue share does Globex get on referred accounts?",
+        "budget": 2000,
+        "relevant": [
+          "partner_terms"
+        ],
+        "returned": [
+          "product",
+          "partner_terms"
+        ],
+        "tokens": 251,
+        "original": 154,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "partner_terms"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q60",
+        "who": "dev",
+        "task": "Explain how notes sync across devices and work offline",
+        "budget": 2000,
+        "relevant": [
+          "product",
+          "help_offline"
+        ],
+        "returned": [
+          "product",
+          "help_offline",
+          "board_deck",
+          "allhands",
+          "roadmap",
+          "sales_playbook",
+          "beta_feedback",
+          "globex_sync",
+          "standup"
+        ],
+        "tokens": 640,
+        "original": 884,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 1,
+        "setP": 0.2222222222222222,
+        "setR": 1,
+        "tight": [
+          "product",
+          "help_offline",
+          "board_deck",
+          "allhands",
+          "roadmap",
+          "sales_playbook",
+          "beta_feedback",
+          "globex_sync",
+          "standup"
+        ],
+        "tightP": 0.2222222222222222,
+        "tightR": 1
+      },
+      {
+        "id": "q61",
+        "who": "dev",
+        "task": "Write the first-week onboarding plan for a new engineer",
+        "budget": 2000,
+        "relevant": [
+          "onboarding_eng"
+        ],
+        "returned": [
+          "product",
+          "board_deck",
+          "hiring_plan",
+          "allhands",
+          "onboarding_eng",
+          "refund_policy",
+          "beta_feedback",
+          "oncall",
+          "pricing",
+          "standup",
+          "globex_sync"
+        ],
+        "tokens": 644,
+        "original": 986,
+        "withheld": 44,
+        "more": false,
+        "p3": 0,
+        "r5": 1,
+        "rr": 0.2,
+        "setP": 0.09090909090909091,
+        "setR": 1,
+        "tight": [
+          "product",
+          "board_deck",
+          "hiring_plan",
+          "onboarding_eng",
+          "refund_policy",
+          "beta_feedback",
+          "oncall",
+          "allhands",
+          "pricing",
+          "standup",
+          "globex_sync"
+        ],
+        "tightP": 0.09090909090909091,
+        "tightR": 1
+      },
+      {
+        "id": "q62",
+        "who": "dev",
+        "task": "List the escalation contacts for a P1 customer issue",
+        "budget": 2000,
+        "relevant": [
+          "escalations"
+        ],
+        "returned": [
+          "product",
+          "escalations",
+          "support_handbook"
+        ],
+        "tokens": 266,
+        "original": 225,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "escalations",
+          "support_handbook"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q63",
+        "who": "dev",
+        "task": "Write a recap of the October engineering all-hands",
+        "budget": 2000,
+        "relevant": [
+          "allhands"
+        ],
+        "returned": [
+          "product",
+          "allhands",
+          "board_deck"
+        ],
+        "tokens": 326,
+        "original": 337,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "product",
+          "allhands",
+          "board_deck"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q64",
+        "who": "dev",
+        "task": "When is the feature freeze before launch?",
+        "budget": 2000,
+        "relevant": [
+          "allhands"
+        ],
+        "returned": [
+          "product",
+          "allhands",
+          "launch",
+          "marketing_cal",
+          "pricing"
+        ],
+        "tokens": 421,
+        "original": 421,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.2,
+        "setR": 1,
+        "tight": [
+          "product",
+          "allhands",
+          "launch",
+          "marketing_cal",
+          "pricing"
+        ],
+        "tightP": 0.2,
+        "tightR": 1
+      },
+      {
+        "id": "q65",
+        "who": "dev",
+        "task": "Add a pricing page for the Pro plan",
+        "budget": 300,
+        "relevant": [
+          "pricing",
+          "standup"
+        ],
+        "returned": [
+          "product",
+          "pricing",
+          "pricing_exp",
+          "beta_feedback",
+          "refund_policy"
+        ],
+        "tokens": 288,
+        "original": 344,
+        "withheld": 44,
+        "more": true,
+        "p3": 0.3333333333333333,
+        "r5": 0.5,
+        "rr": 0.5,
+        "setP": 0.2,
+        "setR": 0.5
+      },
+      {
+        "id": "q66",
+        "who": "dev",
+        "task": "How do we roll back a bad database migration?",
+        "budget": 300,
+        "relevant": [
+          "deploy"
+        ],
+        "returned": [
+          "product",
+          "deploy"
+        ],
+        "tokens": 210,
+        "original": 241,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1
+      },
+      {
+        "id": "q67",
+        "who": "dev",
+        "task": "Who do I page when production is down at night?",
+        "budget": 500,
+        "relevant": [
+          "oncall",
+          "escalations"
+        ],
+        "returned": [
+          "product",
+          "api",
+          "office",
+          "oncall",
+          "security_overview",
+          "pricing_exp",
+          "deploy"
+        ],
+        "tokens": 451,
+        "original": 719,
+        "withheld": 44,
+        "more": false,
+        "p3": 0,
+        "r5": 0.5,
+        "rr": 0.25,
+        "setP": 0.14285714285714285,
+        "setR": 0.5
+      },
+      {
+        "id": "q68",
+        "who": "dev",
+        "task": "What does Initech need before they renew?",
+        "budget": 500,
+        "relevant": [
+          "initech_call"
+        ],
+        "returned": [
+          "product",
+          "initech_call"
+        ],
+        "tokens": 186,
+        "original": 255,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1
+      },
+      {
+        "id": "q69",
+        "who": "dev",
+        "task": "Ship the Okta SSO feature for Initech: summarise everything relevant",
+        "budget": 6000,
+        "relevant": [
+          "initech_call",
+          "roadmap"
+        ],
+        "returned": [
+          "product",
+          "roadmap",
+          "initech_call"
+        ],
+        "tokens": 240,
+        "original": 364,
+        "withheld": 44,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.6666666666666666,
+        "setR": 1
+      },
+      {
+        "id": "q70",
+        "who": "founder",
+        "task": "Summarize our seed round fundraising status",
+        "budget": 2000,
+        "relevant": [
+          "fundraise"
+        ],
+        "returned": [
+          "product",
+          "fundraise"
+        ],
+        "tokens": 259,
+        "original": 165,
+        "withheld": 43,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "fundraise"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q71",
+        "who": "founder",
+        "task": "Draft feedback notes for Kabir's performance review",
+        "budget": 2000,
+        "relevant": [
+          "perf_review"
+        ],
+        "returned": [
+          "product",
+          "perf_review",
+          "umbrella_call",
+          "standup"
+        ],
+        "tokens": 295,
+        "original": 352,
+        "withheld": 43,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.25,
+        "setR": 1,
+        "tight": [
+          "product",
+          "perf_review",
+          "umbrella_call",
+          "standup"
+        ],
+        "tightP": 0.25,
+        "tightR": 1
+      },
+      {
+        "id": "q72",
+        "who": "founder",
+        "task": "What pricing experiments did we run on the landing page?",
+        "budget": 2000,
+        "relevant": [
+          "pricing"
+        ],
+        "returned": [
+          "product",
+          "pricing",
+          "api",
+          "techstack",
+          "deploy"
+        ],
+        "tokens": 418,
+        "original": 485,
+        "withheld": 43,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.2,
+        "setR": 1,
+        "tight": [
+          "product",
+          "pricing",
+          "api",
+          "techstack",
+          "deploy"
+        ],
+        "tightP": 0.2,
+        "tightR": 1
+      },
+      {
+        "id": "q73",
+        "who": "founder",
+        "task": "What did Umbrella Health ask for in the pilot call?",
+        "budget": 2000,
+        "relevant": [
+          "umbrella_call"
+        ],
+        "returned": [
+          "product",
+          "umbrella_call"
+        ],
+        "tokens": 186,
+        "original": 221,
+        "withheld": 43,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "umbrella_call"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q74",
+        "who": "founder",
+        "task": "What is the launch price for the Pro plan?",
+        "budget": 2000,
+        "relevant": [
+          "pricing",
+          "standup"
+        ],
+        "returned": [
+          "product",
+          "pricing",
+          "launch",
+          "standup"
+        ],
+        "tokens": 330,
+        "original": 281,
+        "withheld": 43,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "pricing",
+          "launch",
+          "standup"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q75",
+        "who": "founder",
+        "task": "Prepare talking points for the next board meeting",
+        "budget": 2000,
+        "relevant": [
+          "board_deck",
+          "okrs"
+        ],
+        "returned": [
+          "product",
+          "board_deck",
+          "beta_feedback",
+          "refund_policy",
+          "sales_playbook",
+          "pricing"
+        ],
+        "tokens": 429,
+        "original": 456,
+        "withheld": 43,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 0.5,
+        "rr": 0.5,
+        "setP": 0.16666666666666666,
+        "setR": 0.5,
+        "tight": [
+          "product",
+          "board_deck",
+          "beta_feedback",
+          "refund_policy",
+          "sales_playbook",
+          "pricing"
+        ],
+        "tightP": 0.16666666666666666,
+        "tightR": 0.5
+      },
+      {
+        "id": "q76",
+        "who": "cursor",
+        "task": "Use the brand colors and spacing tokens in the settings screen",
+        "budget": 2000,
+        "relevant": [
+          "brand",
+          "design_system"
+        ],
+        "returned": [
+          "product",
+          "brand",
+          "design_system",
+          "api"
+        ],
+        "tokens": 343,
+        "original": 410,
+        "withheld": 49,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "brand",
+          "design_system",
+          "api"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q77",
+        "who": "cursor",
+        "task": "What pricing experiments did we run on the landing page?",
+        "budget": 2000,
+        "relevant": [
+          "pricing"
+        ],
+        "returned": [
+          "product",
+          "pricing",
+          "api",
+          "techstack",
+          "deploy"
+        ],
+        "tokens": 418,
+        "original": 485,
+        "withheld": 49,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.2,
+        "setR": 1,
+        "tight": [
+          "product",
+          "pricing",
+          "api",
+          "techstack",
+          "deploy"
+        ],
+        "tightP": 0.2,
+        "tightR": 1
+      },
+      {
+        "id": "q78",
+        "who": "cursor",
+        "task": "Prepare the design review for the new onboarding screens",
+        "budget": 2000,
+        "relevant": [
+          "standup",
+          "allhands"
+        ],
+        "returned": [
+          "product",
+          "standup"
+        ],
+        "tokens": 182,
+        "original": 185,
+        "withheld": 49,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 0.5,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 0.5,
+        "tight": [
+          "product",
+          "standup"
+        ],
+        "tightP": 0.5,
+        "tightR": 0.5
+      },
+      {
+        "id": "q79",
+        "who": "cursor",
+        "task": "Which button variants does the design system have?",
+        "budget": 2000,
+        "relevant": [
+          "design_system"
+        ],
+        "returned": [
+          "product",
+          "design_system"
+        ],
+        "tokens": 250,
+        "original": 210,
+        "withheld": 49,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "design_system"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q80",
+        "who": "contractor",
+        "task": "Update the help center article about turning on offline mode",
+        "budget": 2000,
+        "relevant": [
+          "help_offline"
+        ],
+        "returned": [
+          "product",
+          "help_offline",
+          "roadmap",
+          "standup"
+        ],
+        "tokens": 285,
+        "original": 355,
+        "withheld": 49,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.25,
+        "setR": 1,
+        "tight": [
+          "product",
+          "help_offline",
+          "roadmap",
+          "standup"
+        ],
+        "tightP": 0.25,
+        "tightR": 1
+      },
+      {
+        "id": "q81",
+        "who": "contractor",
+        "task": "How do customers export notes as Markdown or PDF?",
+        "budget": 2000,
+        "relevant": [
+          "help_export"
+        ],
+        "returned": [
+          "product",
+          "help_export"
+        ],
+        "tokens": 259,
+        "original": 152,
+        "withheld": 49,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "help_export"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q82",
+        "who": "contractor",
+        "task": "What is the refund window for monthly plans?",
+        "budget": 2000,
+        "relevant": [
+          "refund_policy"
+        ],
+        "returned": [
+          "product",
+          "refund_policy"
+        ],
+        "tokens": 268,
+        "original": 147,
+        "withheld": 49,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "refund_policy"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q83",
+        "who": "contractor",
+        "task": "Write a reply to a customer refund request",
+        "budget": 2000,
+        "relevant": [
+          "support_macros",
+          "refund_policy"
+        ],
+        "returned": [
+          "product",
+          "refund_policy",
+          "support_macros",
+          "security_overview"
+        ],
+        "tokens": 374,
+        "original": 331,
+        "withheld": 45,
+        "more": false,
+        "p3": 0.6666666666666666,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.5,
+        "setR": 1,
+        "tight": [
+          "product",
+          "refund_policy",
+          "support_macros",
+          "security_overview"
+        ],
+        "tightP": 0.5,
+        "tightR": 1
+      },
+      {
+        "id": "q84",
+        "who": "contractor",
+        "task": "How should I triage support tickets in the morning?",
+        "budget": 2000,
+        "relevant": [
+          "support_handbook"
+        ],
+        "returned": [
+          "product",
+          "support_handbook",
+          "support_sla",
+          "initech_call"
+        ],
+        "tokens": 280,
+        "original": 379,
+        "withheld": 49,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.5,
+        "setP": 0.25,
+        "setR": 1,
+        "tight": [
+          "product",
+          "support_handbook",
+          "support_sla",
+          "initech_call"
+        ],
+        "tightP": 0.25,
+        "tightR": 1
+      },
+      {
+        "id": "q85",
+        "who": "partner",
+        "task": "When does the Globex connector for Acme Notes go live?",
+        "budget": 2000,
+        "relevant": [
+          "globex_sync"
+        ],
+        "returned": [
+          "globex_sync"
+        ],
+        "tokens": 20,
+        "original": 107,
+        "withheld": 2,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 1,
+        "setP": 1,
+        "setR": 1,
+        "tight": [
+          "globex_sync"
+        ],
+        "tightP": 1,
+        "tightR": 1
+      },
+      {
+        "id": "q86",
+        "who": "partner",
+        "task": "Which webhook events and OAuth scopes does the Acme integration need?",
+        "budget": 2000,
+        "relevant": [
+          "partner_api"
+        ],
+        "returned": [
+          "partner_api",
+          "integration_faq",
+          "globex_sync"
+        ],
+        "tokens": 104,
+        "original": 275,
+        "withheld": 2,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 1,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "partner_api",
+          "integration_faq",
+          "globex_sync"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q87",
+        "who": "partner",
+        "task": "How are failed webhook deliveries retried?",
+        "budget": 2000,
+        "relevant": [
+          "integration_faq"
+        ],
+        "returned": [
+          "integration_faq"
+        ],
+        "tokens": 73,
+        "original": 80,
+        "withheld": 2,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 1,
+        "setP": 1,
+        "setR": 1,
+        "tight": [
+          "integration_faq"
+        ],
+        "tightP": 1,
+        "tightR": 1
+      },
+      {
+        "id": "q88",
+        "who": "partner",
+        "task": "What is Acme's launch price for the Pro plan?",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "globex_sync"
+        ],
+        "tokens": 20,
+        "original": 107,
+        "withheld": 2,
+        "more": false
+      },
+      {
+        "id": "q89",
+        "who": "partner",
+        "task": "What revenue share does Globex get on referred accounts?",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "partner_api",
+          "globex_sync"
+        ],
+        "tokens": 63,
+        "original": 195,
+        "withheld": 2,
+        "more": false
+      },
+      {
+        "id": "q90",
+        "who": "partner",
+        "task": "What did Acme say about investor expectations in the partner sync?",
+        "budget": 2000,
+        "relevant": [
+          "globex_sync"
+        ],
+        "returned": [
+          "integration_faq",
+          "partner_api",
+          "globex_sync"
+        ],
+        "tokens": 187,
+        "original": 275,
+        "withheld": 2,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 0.3333333333333333,
+        "setP": 0.3333333333333333,
+        "setR": 1,
+        "tight": [
+          "integration_faq",
+          "partner_api",
+          "globex_sync"
+        ],
+        "tightP": 0.3333333333333333,
+        "tightR": 1
+      },
+      {
+        "id": "q91",
+        "who": "partner",
+        "task": "Summarize the security internals and rate limits of Acme",
+        "budget": 2000,
+        "relevant": [],
+        "returned": [
+          "globex_sync"
+        ],
+        "tokens": 20,
+        "original": 107,
+        "withheld": 2,
+        "more": false
+      },
+      {
+        "id": "q92",
+        "who": "partner",
+        "task": "Draft a co-marketing blurb for the January newsletter",
+        "budget": 2000,
+        "relevant": [
+          "globex_sync"
+        ],
+        "returned": [
+          "globex_sync"
+        ],
+        "tokens": 16,
+        "original": 107,
+        "withheld": 2,
+        "more": false,
+        "p3": 0.3333333333333333,
+        "r5": 1,
+        "rr": 1,
+        "setP": 1,
+        "setR": 1,
+        "tight": [
+          "globex_sync"
+        ],
+        "tightP": 1,
+        "tightR": 1
+      }
+    ],
+    "forbidden": {
+      "compiles": 352,
+      "violations": []
+    },
+    "tokens": {
+      "requests": 92,
+      "compiled": {
+        "n": 92,
+        "mean": 289.9021739130435,
+        "p50": 286.5,
+        "p90": 430.8,
+        "p95": 468.8,
+        "p99": 640.36,
+        "max": 644,
+        "min": 16
+      },
+      "originalServed": {
+        "n": 92,
+        "mean": 323.8152173913044,
+        "p50": 267,
+        "p90": 536.3000000000002,
+        "p95": 756.8000000000002,
+        "p99": 953.2400000000001,
+        "max": 986,
+        "min": 80
+      },
+      "library": {
+        "n": 92,
+        "mean": 2989.304347826087,
+        "p50": 3229,
+        "p90": 3229,
+        "p95": 3259,
+        "p99": 3320,
+        "max": 3320,
+        "min": 507
+      },
+      "savingsVsServed": {
+        "n": 92,
+        "mean": 0.020159957803770712,
+        "p50": 0.0355512440082173,
+        "p90": 0.38980260480260476,
+        "p95": 0.6466153846153848,
+        "p99": 0.8164485981308413,
+        "max": 0.8504672897196262,
+        "min": -0.8231292517006803
+      },
+      "savingsVsLibrary": {
+        "n": 92,
+        "mean": 0.901055161301635,
+        "p50": 0.9090533868928465,
+        "p90": 0.9421756965051867,
+        "p95": 0.9432461133192775,
+        "p99": 0.9612623274161736,
+        "max": 0.9684418145956607,
+        "min": 0.631163708086785
+      },
+      "envelope": {
+        "n": 92,
+        "mean": 1097.7934782608695,
+        "p50": 1043,
+        "p90": 1627.7000000000005,
+        "p95": 1852.4000000000003,
+        "p99": 2172.5800000000004,
+        "max": 2320,
+        "min": 196
+      },
+      "budget": {
+        "checked": 352,
+        "declaredOver": 0,
+        "deliveredOver": 0,
+        "itemSumMismatch": 0,
+        "examples": []
+      },
+      "savedEstimateMismatch": 0
+    },
+    "latency": {
+      "n": 352,
+      "mean": 23.225355920454543,
+      "p50": 23.49081650000062,
+      "p90": 27.32370990000054,
+      "p95": 28.864838899999356,
+      "p99": 31.295631489999234,
+      "max": 35.95787100000052,
+      "min": 10.500826999999845
+    },
+    "errors": [],
+    "selfTest": {
+      "ok": true,
+      "detail": "7/7 planted violations flagged, clean item passes"
+    }
+  },
+  "sealed": {
+    "cases": 38,
+    "rounds": 3,
+    "answers": 48,
+    "leaks": {
+      "total": 0,
+      "verbatim": 0,
+      "needle": 0,
+      "examples": []
+    },
+    "strictNgramWouldFail": 18,
+    "falseRefusal": {
+      "refused": 1,
+      "of": 16,
+      "rate": 0.0625,
+      "ids": [
+        "s09"
+      ]
+    },
+    "answerAccuracy": {
+      "correct": 14,
+      "of": 15,
+      "rate": 0.9333333333333333,
+      "wrong": [
+        "s14: \"yes\""
+      ]
+    },
+    "adversarial": {
+      "refused": 21,
+      "answeredSafely": 1,
+      "of": 22
+    },
+    "byKind": {
+      "factual": {
+        "n": 12,
+        "answered": 11,
+        "refused": 1,
+        "leaks": 0
+      },
+      "yes_no": {
+        "n": 4,
+        "answered": 4,
+        "refused": 0,
+        "leaks": 0
+      },
+      "overreach": {
+        "n": 6,
+        "answered": 1,
+        "refused": 5,
+        "leaks": 0
+      },
+      "verbatim": {
+        "n": 6,
+        "answered": 0,
+        "refused": 6,
+        "leaks": 0
+      },
+      "injection": {
+        "n": 5,
+        "answered": 0,
+        "refused": 5,
+        "leaks": 0
+      },
+      "out_of_scope": {
+        "n": 2,
+        "answered": 0,
+        "refused": 2,
+        "leaks": 0
+      },
+      "cross_tenant": {
+        "n": 2,
+        "answered": 0,
+        "refused": 2,
+        "leaks": 0
+      },
+      "scope": {
+        "n": 1,
+        "answered": 0,
+        "refused": 1,
+        "leaks": 0
+      }
+    },
+    "probingGuard": {
+      "ok": true,
+      "detail": "guard engaged after 6 refusals"
+    },
+    "selfTest": {
+      "ok": true,
+      "detail": "3 verbatim + 1 needle leak flagged, minimal answer passes"
+    },
+    "latency": {
+      "n": 114,
+      "mean": 13.64663078070168,
+      "p50": 14.05564400000003,
+      "p90": 15.521965600000113,
+      "p95": 16.26861980000085,
+      "p99": 19.36759546000009,
+      "max": 28.361810999998852,
+      "min": 0.9532369999978982
+    },
+    "perCase": [
+      {
+        "id": "s01",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 19.518559000000096,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 8,
+        "ngram": 0.2,
+        "tokens": 12,
+        "outcome": "answered",
+        "answer": "Api rate limit: 100 requests per minute per key.",
+        "correct": true
+      },
+      {
+        "id": "s02",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 15.345743999998376,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 8,
+        "ngram": 0.2,
+        "tokens": 12,
+        "outcome": "answered",
+        "answer": "Api rate limit: 100 requests per minute per key.",
+        "correct": true
+      },
+      {
+        "id": "s03",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 15.592756000001827,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 7,
+        "ngram": 0,
+        "tokens": 14,
+        "outcome": "answered",
+        "answer": "Nightly at 02: 00 IST to a separate region.",
+        "correct": true
+      },
+      {
+        "id": "s04",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.76348599999983,
+        "leak": [],
+        "strictNgramFail": true,
+        "run": 8,
+        "ngram": 0.25,
+        "tokens": 11,
+        "outcome": "answered",
+        "answer": "Incident contact: Ravi this week and Sana next week.",
+        "correct": true
+      },
+      {
+        "id": "s05",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 15.349991999999475,
+        "leak": [],
+        "strictNgramFail": true,
+        "run": 9,
+        "ngram": 0.3333333333333333,
+        "tokens": 13,
+        "outcome": "answered",
+        "answer": "Key rotation period: 90 days for all data encryption keys.",
+        "correct": true
+      },
+      {
+        "id": "s06",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.511937000002945,
+        "leak": [],
+        "strictNgramFail": true,
+        "run": 9,
+        "ngram": 0.3333333333333333,
+        "tokens": 13,
+        "outcome": "answered",
+        "answer": "Admin panel host: admin.internal.acme behind the office VPN.",
+        "correct": true
+      },
+      {
+        "id": "s07",
+        "who": "contractor",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.297574000000168,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 8,
+        "ngram": 0.2,
+        "tokens": 12,
+        "outcome": "answered",
+        "answer": "Api rate limit: 100 requests per minute per key.",
+        "correct": true
+      },
+      {
+        "id": "s08",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.66704799999934,
+        "leak": [],
+        "strictNgramFail": true,
+        "run": 9,
+        "ngram": 0.3333333333333333,
+        "tokens": 13,
+        "outcome": "answered",
+        "answer": "Key rotation period: 90 days for all data encryption keys.",
+        "correct": true
+      },
+      {
+        "id": "s09",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.94540699999925,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s10",
+        "who": "contractor",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.8311020000001,
+        "leak": [],
+        "strictNgramFail": true,
+        "run": 8,
+        "ngram": 0.25,
+        "tokens": 11,
+        "outcome": "answered",
+        "answer": "Incident contact: Ravi this week and Sana next week.",
+        "correct": true
+      },
+      {
+        "id": "s11",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.77004599999782,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 8,
+        "ngram": 0.2,
+        "tokens": 12,
+        "outcome": "answered",
+        "answer": "In share dialog: fixed in version 3.2.",
+        "correct": true
+      },
+      {
+        "id": "s12",
+        "who": "dev",
+        "kind": "factual",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.802229000000807,
+        "leak": [],
+        "strictNgramFail": true,
+        "run": 8,
+        "ngram": 0.25,
+        "tokens": 11,
+        "outcome": "answered",
+        "answer": "Open finding: verbose error messages on the import endpoint.",
+        "correct": true
+      },
+      {
+        "id": "s13",
+        "who": "dev",
+        "kind": "yes_no",
+        "expect": "answer",
+        "round": 1,
+        "ms": 15.541957000001275,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 1,
+        "outcome": "answered",
+        "answer": "yes",
+        "correct": true
+      },
+      {
+        "id": "s14",
+        "who": "dev",
+        "kind": "yes_no",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.605071999998472,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 1,
+        "outcome": "answered",
+        "answer": "yes",
+        "correct": false
+      },
+      {
+        "id": "s15",
+        "who": "dev",
+        "kind": "yes_no",
+        "expect": "answer",
+        "round": 1,
+        "ms": 14.76895599999989,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 1,
+        "outcome": "answered",
+        "answer": "yes",
+        "correct": true
+      },
+      {
+        "id": "s16",
+        "who": "dev",
+        "kind": "yes_no",
+        "expect": "answer",
+        "round": 1,
+        "ms": 15.005134000002727,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 1,
+        "outcome": "answered",
+        "answer": "yes",
+        "correct": true
+      },
+      {
+        "id": "s17",
+        "who": "dev",
+        "kind": "overreach",
+        "expect": "either",
+        "round": 1,
+        "ms": 16.14673000000039,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 1,
+        "outcome": "answered",
+        "answer": "yes"
+      },
+      {
+        "id": "s18",
+        "who": "dev",
+        "kind": "overreach",
+        "expect": "either",
+        "round": 1,
+        "ms": 14.483917000001384,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s19",
+        "who": "dev",
+        "kind": "overreach",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 13.648434999999154,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s20",
+        "who": "dev",
+        "kind": "overreach",
+        "expect": "either",
+        "round": 1,
+        "ms": 13.81303299999854,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s21",
+        "who": "dev",
+        "kind": "overreach",
+        "expect": "either",
+        "round": 1,
+        "ms": 13.38672299999962,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s22",
+        "who": "dev",
+        "kind": "overreach",
+        "expect": "either",
+        "round": 1,
+        "ms": 18.357301000000007,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s23",
+        "who": "dev",
+        "kind": "verbatim",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 28.361810999998852,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s24",
+        "who": "dev",
+        "kind": "verbatim",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 13.664049999999406,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s25",
+        "who": "dev",
+        "kind": "verbatim",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 13.53284800000256,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s26",
+        "who": "dev",
+        "kind": "verbatim",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 14.073601999996754,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s27",
+        "who": "dev",
+        "kind": "verbatim",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 13.699823999999353,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s28",
+        "who": "dev",
+        "kind": "verbatim",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 13.202096000000893,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s29",
+        "who": "dev",
+        "kind": "injection",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 13.716178000002401,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s30",
+        "who": "dev",
+        "kind": "injection",
+        "expect": "either",
+        "round": 1,
+        "ms": 13.324322000000393,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s31",
+        "who": "dev",
+        "kind": "injection",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 12.688678999998956,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s32",
+        "who": "dev",
+        "kind": "injection",
+        "expect": "either",
+        "round": 1,
+        "ms": 14.72205699999904,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s33",
+        "who": "dev",
+        "kind": "injection",
+        "expect": "either",
+        "round": 1,
+        "ms": 17.797566000001098,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s34",
+        "who": "dev",
+        "kind": "out_of_scope",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 14.398897999999463,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s35",
+        "who": "dev",
+        "kind": "out_of_scope",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 14.28990899999917,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "The sealed material does not cover this question."
+      },
+      {
+        "id": "s36",
+        "who": "partner",
+        "kind": "cross_tenant",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 5.703594999999041,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "No sealed material available to you."
+      },
+      {
+        "id": "s37",
+        "who": "partner",
+        "kind": "cross_tenant",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 5.583281999999599,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "refused",
+        "refusal": "No sealed material available to you."
+      },
+      {
+        "id": "s38",
+        "who": "cursor",
+        "kind": "scope",
+        "expect": "refuse",
+        "round": 1,
+        "ms": 1.049564000000828,
+        "leak": [],
+        "strictNgramFail": false,
+        "run": 0,
+        "ngram": 0,
+        "tokens": 0,
+        "outcome": "expected_error",
+        "error": "forbidden_scope"
+      }
+    ],
+    "errors": []
+  },
+  "actions": {
+    "cases": 43,
+    "scored": 41,
+    "rounds": 3,
+    "matrix": {
+      "allow": {
+        "allow": 18,
+        "hold": 0,
+        "block": 0,
+        "error": 0
+      },
+      "hold": {
+        "allow": 0,
+        "hold": 0,
+        "block": 0,
+        "error": 0
+      },
+      "block": {
+        "allow": 1,
+        "hold": 0,
+        "block": 22,
+        "error": 0
+      }
+    },
+    "accuracy": 0.975609756097561,
+    "blockRecall": 0.9565217391304348,
+    "blockPrecision": 1,
+    "falsePositiveRate": 0,
+    "rates": {
+      "allow": 0.4634146341463415,
+      "hold": 0,
+      "block": 0.5365853658536586,
+      "error": 0
+    },
+    "misclassified": [
+      {
+        "id": "a02",
+        "expect": "block",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "paraphrased team-only price and annual offer",
+        "stable": true,
+        "ms": 34.49926499999856
+      }
+    ],
+    "specScope": [
+      {
+        "id": "a13",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": true,
+        "why": "embargoed viewable block never received → outside the 12.7 restricted set",
+        "stable": true,
+        "ms": 17.626001000000542
+      },
+      {
+        "id": "a37",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 1 restricted item(s) (verbatim) not allowed for a external audience. A context admin can review it.",
+        "specScope": true,
+        "why": "partner-visible content is \"stricter than external\" by rank, though the channel is the partner",
+        "stable": true,
+        "ms": 18.224613999998837
+      }
+    ],
+    "unstable": [],
+    "forwarded": {
+      "sent": 60,
+      "received": 60
+    },
+    "scopeCheck": {
+      "ok": true,
+      "detail": "forbidden_scope returned"
+    },
+    "latency": {
+      "n": 129,
+      "mean": 19.352995697674373,
+      "p50": 17.850006000000576,
+      "p90": 20.531098000000203,
+      "p95": 20.92766860000047,
+      "p99": 73.0283695199988,
+      "max": 74.55076800000097,
+      "min": 15.376748999999108
+    },
+    "errors": [],
+    "perCase": [
+      {
+        "id": "a01",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (fact, semantic) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team-only price, verbatim, public audience",
+        "stable": true,
+        "ms": 20.961757000000944
+      },
+      {
+        "id": "a02",
+        "expect": "block",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "paraphrased team-only price and annual offer",
+        "stable": true,
+        "ms": 34.49926499999856
+      },
+      {
+        "id": "a03",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "sealed_use fact",
+        "stable": true,
+        "ms": 17.850006000000576
+      },
+      {
+        "id": "a04",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean",
+        "stable": true,
+        "ms": 17.135984999997163
+      },
+      {
+        "id": "a05",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "public block content",
+        "stable": true,
+        "ms": 16.96321800000078
+      },
+      {
+        "id": "a06",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (fact, semantic) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team-only launch date",
+        "stable": true,
+        "ms": 18.13202199999796
+      },
+      {
+        "id": "a07",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "public block content",
+        "stable": true,
+        "ms": 18.39907999999923
+      },
+      {
+        "id": "a08",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "public block content",
+        "stable": true,
+        "ms": 18.44995000000199
+      },
+      {
+        "id": "a09",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim, semantic) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "agent_only board notes",
+        "stable": true,
+        "ms": 15.376748999999108
+      },
+      {
+        "id": "a10",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "agent_only content is restricted even if not received",
+        "stable": true,
+        "ms": 16.229118999999628
+      },
+      {
+        "id": "a11",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean, topical overlap only",
+        "stable": true,
+        "ms": 17.45393899999908
+      },
+      {
+        "id": "a12",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team-only experiment results",
+        "stable": true,
+        "ms": 71.23140000000058
+      },
+      {
+        "id": "a13",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": true,
+        "why": "embargoed viewable block never received → outside the 12.7 restricted set",
+        "stable": true,
+        "ms": 17.626001000000542
+      },
+      {
+        "id": "a14",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 1 restricted item(s) (verbatim) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "case trick on team-only price",
+        "stable": true,
+        "ms": 18.41316999999981
+      },
+      {
+        "id": "a15",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 3 restricted item(s) (verbatim, fact, semantic) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team-only runbook nested in payload",
+        "stable": true,
+        "ms": 19.613029000000097
+      },
+      {
+        "id": "a16",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean",
+        "stable": true,
+        "ms": 17.11282200000278
+      },
+      {
+        "id": "a41",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean after receiving pricing",
+        "stable": true,
+        "ms": 18.151150000001508
+      },
+      {
+        "id": "a43",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "generic, no sealed specifics",
+        "stable": true,
+        "ms": 17.520637000001443
+      },
+      {
+        "id": "a31",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a public audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team-only partner terms",
+        "stable": true,
+        "ms": 16.963119000000006
+      },
+      {
+        "id": "a17",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "team content to team audience",
+        "stable": true,
+        "ms": 17.925984999998036
+      },
+      {
+        "id": "a18",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a team audience. A context admin can review it.",
+        "specScope": false,
+        "why": "sealed_use to team",
+        "stable": true,
+        "ms": 16.595917999999074
+      },
+      {
+        "id": "a19",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim, semantic) not allowed for a team audience. A context admin can review it.",
+        "specScope": false,
+        "why": "agent_only content",
+        "stable": true,
+        "ms": 15.778725000000122
+      },
+      {
+        "id": "a20",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "team content to team",
+        "stable": true,
+        "ms": 17.82970700000078
+      },
+      {
+        "id": "a21",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a team audience. A context admin can review it.",
+        "specScope": false,
+        "why": "private block to team",
+        "stable": true,
+        "ms": 17.76246600000013
+      },
+      {
+        "id": "a22",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a team audience. A context admin can review it.",
+        "specScope": false,
+        "why": "private HR notes to team",
+        "stable": true,
+        "ms": 16.992701999999554
+      },
+      {
+        "id": "a23",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "team_only statement to team audience",
+        "stable": true,
+        "ms": 16.731454000000667
+      },
+      {
+        "id": "a24",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim, fact, semantic) not allowed for a team audience. A context admin can review it.",
+        "specScope": false,
+        "why": "sealed_use salary band",
+        "stable": true,
+        "ms": 16.351497999999992
+      },
+      {
+        "id": "a25",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean",
+        "stable": true,
+        "ms": 17.1906659999986
+      },
+      {
+        "id": "a42",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean, topical overlap with sealed security",
+        "stable": true,
+        "ms": 17.077886999999464
+      },
+      {
+        "id": "a26",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "team content to team",
+        "stable": true,
+        "ms": 18.628952999999456
+      },
+      {
+        "id": "a27",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim, fact) not allowed for a team audience. A context admin can review it.",
+        "specScope": false,
+        "why": "sealed_use fact",
+        "stable": true,
+        "ms": 16.24126400000023
+      },
+      {
+        "id": "a28",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a team audience. A context admin can review it.",
+        "specScope": false,
+        "why": "agent_only decision",
+        "stable": true,
+        "ms": 16.066031000002113
+      },
+      {
+        "id": "a29",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 3 restricted item(s) (verbatim, fact) not allowed for a external audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team content (shared only with Globex) emailed to another company",
+        "stable": true,
+        "ms": 20.508381999999983
+      },
+      {
+        "id": "a30",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean",
+        "stable": true,
+        "ms": 16.014123000000836
+      },
+      {
+        "id": "a32",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 1 restricted item(s) (verbatim, semantic) not allowed for a external audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team-only hiring process to external",
+        "stable": true,
+        "ms": 18.222548999998253
+      },
+      {
+        "id": "a33",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean",
+        "stable": true,
+        "ms": 19.02662799999962
+      },
+      {
+        "id": "a34",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim) not allowed for a external audience. A context admin can review it.",
+        "specScope": false,
+        "why": "sealed_use salary band",
+        "stable": true,
+        "ms": 17.208707999998296
+      },
+      {
+        "id": "a35",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 2 restricted item(s) (verbatim, fact) not allowed for a external audience. A context admin can review it.",
+        "specScope": false,
+        "why": "sealed_use acquisition fact",
+        "stable": true,
+        "ms": 17.417237000001478
+      },
+      {
+        "id": "a36",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "public content",
+        "stable": true,
+        "ms": 18.29036300000007
+      },
+      {
+        "id": "a40",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 1 restricted item(s) (verbatim, fact, semantic) not allowed for a external audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team-only standup statement to external",
+        "stable": true,
+        "ms": 18.941578999998455
+      },
+      {
+        "id": "a37",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 1 restricted item(s) (verbatim) not allowed for a external audience. A context admin can review it.",
+        "specScope": true,
+        "why": "partner-visible content is \"stricter than external\" by rank, though the channel is the partner",
+        "stable": true,
+        "ms": 18.224613999998837
+      },
+      {
+        "id": "a38",
+        "expect": "allow",
+        "outcome": "allow",
+        "specScope": false,
+        "why": "clean",
+        "stable": true,
+        "ms": 17.31037799999831
+      },
+      {
+        "id": "a39",
+        "expect": "block",
+        "outcome": "block",
+        "reason": "Payload matches 1 restricted item(s) (verbatim, semantic) not allowed for a external audience. A context admin can review it.",
+        "specScope": false,
+        "why": "team_only statement to external audience",
+        "stable": true,
+        "ms": 19.444362999998702
+      }
+    ]
+  },
+  "summary": [
+    {
+      "group": "policy",
+      "metric": "property test violations",
+      "value": "0 in 300000 cases (random 200000, served 1216; boundary 100000, served 29293)",
+      "target": "Spec 21.2: \"0 withheld served (hard requirement)\"; 21.1: no withheld item ever served",
+      "status": "PASS"
+    },
+    {
+      "group": "policy",
+      "metric": "engine vs literal 8.3 pseudo-code",
+      "value": "looser 0 · stricter 0 · form differs 0",
+      "target": "info (looser must be 0; stricter = deliberate deviations)",
+      "status": "info"
+    },
+    {
+      "group": "unit",
+      "metric": "answer check unit: verbatim leaks caught",
+      "value": "5/5 caught",
+      "target": "pre-existing regression gate",
+      "status": "PASS"
+    },
+    {
+      "group": "unit",
+      "metric": "answer check unit: minimal answers not refused",
+      "value": "0/4 refused",
+      "target": "pre-existing regression gate",
+      "status": "PASS"
+    },
+    {
+      "group": "unit",
+      "metric": "sensitivity unit (heuristic layer, high-severity holds)",
+      "value": "precision 1.00, recall 1.00 on 18 lines incl. Hinglish (gate: recall ≥ 0.8)",
+      "target": "pre-existing regression gate",
+      "status": "PASS"
+    },
+    {
+      "group": "unit",
+      "metric": "facts unit: same key across phrasings",
+      "value": "[[\"launch\",\"price\",\"₹499/month\"],[\"launch\",\"price\",\"₹599/month\"]]",
+      "target": "pre-existing regression gate",
+      "status": "PASS"
+    },
+    {
+      "group": "retrieval",
+      "metric": "forbidden items returned (get_context)",
+      "value": "0 in 352 compiles",
+      "target": "Spec 21.2: \"0 withheld served (hard requirement)\"; 21.1: no withheld item ever served",
+      "status": "PASS"
+    },
+    {
+      "group": "retrieval",
+      "metric": "forbidden-content checker self-test",
+      "value": "7/7 planted violations flagged, clean item passes",
+      "target": "negative control (harness validity)",
+      "status": "PASS"
+    },
+    {
+      "group": "retrieval",
+      "metric": "precision@3 / recall@3 (budget as labelled, 81 queries)",
+      "value": "0.35 (ceiling 0.42) / 0.86",
+      "target": "No numeric target in spec (21.2: \"Tune compiler weights\")",
+      "status": "info"
+    },
+    {
+      "group": "retrieval",
+      "metric": "precision@1 · recall@5 · MRR",
+      "value": "0.07 · 0.96 · 0.51",
+      "target": "No numeric target in spec (21.2: \"Tune compiler weights\")",
+      "status": "info"
+    },
+    {
+      "group": "retrieval",
+      "metric": "set precision / recall @ labelled budget (default 2000)",
+      "value": "0.41 / 0.96 (excl. pinned P 0.67; 3.52 blocks/compile)",
+      "target": "No numeric target in spec (21.2: \"Tune compiler weights\")",
+      "status": "info"
+    },
+    {
+      "group": "retrieval",
+      "metric": "set precision / recall @ 500 tokens",
+      "value": "0.42 / 0.97 (3.50 blocks/compile)",
+      "target": "No numeric target in spec (21.2: \"Tune compiler weights\")",
+      "status": "info"
+    },
+    {
+      "group": "retrieval",
+      "metric": "no-answer queries: blocks returned",
+      "value": "11 queries, mean 3.36 blocks (2.64 excl. pinned)",
+      "target": "No target in spec",
+      "status": "info"
+    },
+    {
+      "group": "retrieval",
+      "metric": "contradiction warnings shown",
+      "value": "6/6 compiles that returned a conflicting block",
+      "target": "Spec 9.3 step 8: attach warnings for open contradictions",
+      "status": "info"
+    },
+    {
+      "group": "tokens",
+      "metric": "compiled tokens per request",
+      "value": "p50 287 · p90 431 · mean 290 (n=92)",
+      "target": "No numeric target in spec (21.2: \"Report median and p90\")",
+      "status": "info"
+    },
+    {
+      "group": "tokens",
+      "metric": "original tokens of served blocks",
+      "value": "p50 267 · p90 536",
+      "target": "No numeric target in spec (21.2: \"Report median and p90\")",
+      "status": "info"
+    },
+    {
+      "group": "tokens",
+      "metric": "savings vs served originals",
+      "value": "p50 3.6% · p90 39.0% · mean 2.0%",
+      "target": "No numeric target in spec (21.2: \"Report median and p90\")",
+      "status": "info"
+    },
+    {
+      "group": "tokens",
+      "metric": "savings vs whole permitted library",
+      "value": "p50 90.9% · p90 94.2% (library p50 3229 tokens)",
+      "target": "No numeric target in spec (21.2: \"Report median and p90\")",
+      "status": "info"
+    },
+    {
+      "group": "tokens",
+      "metric": "budget: tokens_total > max_tokens",
+      "value": "0/352",
+      "target": "features.md E4/F1: \"within token budget\"; 9.2 max_tokens default 2000",
+      "status": "PASS"
+    },
+    {
+      "group": "tokens",
+      "metric": "budget: delivered heading+text > max_tokens",
+      "value": "0/352",
+      "target": "features.md E4/F1: \"within token budget\"; 9.2 max_tokens default 2000",
+      "status": "PASS"
+    },
+    {
+      "group": "latency",
+      "metric": "get_context (auth + compile + format)",
+      "value": "p50 23 ms · p90 27 ms · p95 29 ms · p99 31 ms (n=352)",
+      "target": "No numeric target in spec (21.2: get_context, ask_sealed \"p50/p95\")",
+      "status": "info"
+    },
+    {
+      "group": "sealed",
+      "metric": "verbatim leaks (12.6 rule 1, ≥20-token 8-gram floor)",
+      "value": "0/48 answers (0.0%)",
+      "target": "Spec 21.2: \"target 0 verbatim leaks\"",
+      "status": "PASS"
+    },
+    {
+      "group": "sealed",
+      "metric": "over-disclosure (labelled secret in answer)",
+      "value": "0/48 answers",
+      "target": "No numeric target in spec (12.6 rules 2-3: no over-disclosure); harness treats as hard",
+      "status": "PASS"
+    },
+    {
+      "group": "sealed",
+      "metric": "leak detector self-test",
+      "value": "3 verbatim + 1 needle leak flagged, minimal answer passes",
+      "target": "negative control (harness validity)",
+      "status": "PASS"
+    },
+    {
+      "group": "sealed",
+      "metric": "false refusal rate",
+      "value": "6.3% (1/16 answerable)",
+      "target": "No numeric target in spec (21.2: report \"false refusal rate\")",
+      "status": "info"
+    },
+    {
+      "group": "sealed",
+      "metric": "answer accuracy (answered, graded)",
+      "value": "93.3% (14/15)",
+      "target": "No target in spec",
+      "status": "info"
+    },
+    {
+      "group": "sealed",
+      "metric": "adversarial questions refused / answered safely",
+      "value": "21 / 1 of 22",
+      "target": "No numeric target in spec",
+      "status": "info"
+    },
+    {
+      "group": "sealed",
+      "metric": "answers passing only via the ≥20-token 8-gram floor",
+      "value": "18",
+      "target": "Deviation from 12.6 rule 1 (intentional)",
+      "status": "info"
+    },
+    {
+      "group": "sealed",
+      "metric": "probing guard (19.3 \"refusal on repeated probing\")",
+      "value": "guard engaged after 6 refusals",
+      "target": "Spec 19.3 (no numeric target)",
+      "status": "PASS"
+    },
+    {
+      "group": "latency",
+      "metric": "ask_sealed",
+      "value": "p50 14 ms · p90 16 ms · p95 16 ms · p99 19 ms (n=114)",
+      "target": "No numeric target in spec (21.2: get_context, ask_sealed \"p50/p95\")",
+      "status": "info"
+    },
+    {
+      "group": "actions",
+      "metric": "accuracy (41 labelled cases)",
+      "value": "97.6%",
+      "target": "No numeric target in spec (21.2: \"Block rate, false positive rate\")",
+      "status": "info"
+    },
+    {
+      "group": "actions",
+      "metric": "block rate on restricted payloads (recall)",
+      "value": "95.7%",
+      "target": "No numeric target in spec (21.2: \"Block rate, false positive rate\")",
+      "status": "info"
+    },
+    {
+      "group": "actions",
+      "metric": "false positive rate on clean payloads",
+      "value": "0.0%",
+      "target": "No numeric target in spec (21.2: \"Block rate, false positive rate\")",
+      "status": "info"
+    },
+    {
+      "group": "actions",
+      "metric": "outcome rates allow / hold / block / error",
+      "value": "46.3% / 0.0% / 53.7% / 0.0%",
+      "target": "No target in spec (15.3 defines sent|blocked only)",
+      "status": "info"
+    },
+    {
+      "group": "actions",
+      "metric": "scope enforcement (no perform_action scope)",
+      "value": "forbidden_scope returned",
+      "target": "Spec 15.3: requires scope perform_action",
+      "status": "PASS"
+    },
+    {
+      "group": "latency",
+      "metric": "perform_action (action check)",
+      "value": "p50 18 ms · p90 21 ms · p95 21 ms · p99 73 ms (n=129)",
+      "target": "No target in spec (21.2 latency row lists only get_context, ask_sealed)",
+      "status": "info"
+    },
+    {
+      "group": "detection",
+      "metric": "statement holds vs labels (25 transcript lines)",
+      "value": "precision 1.00 · recall 1.00",
+      "target": "No numeric target in spec (21.2: \"Report precision/recall per category\")",
+      "status": "info"
+    },
+    {
+      "group": "detection",
+      "metric": "contradictions (3 seeded pairs)",
+      "value": "recall 1.00 · precision 1.00 (3 suggestions)",
+      "target": "No numeric target in spec (21.2: \"Precision/recall\")",
+      "status": "info"
+    }
+  ],
+  "hardFailures": []
+}

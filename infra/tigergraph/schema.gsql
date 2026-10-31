@@ -1,0 +1,64 @@
+// Embargo rights graph (embargo.md Part 7.4 / 17.4). Postgres stays authoritative: the gateway re-checks
+// status, revoke, expiry, embargo and statement status in Postgres for every item this graph returns.
+// Verify syntax and REST++ endpoints against your TigerGraph Savanna version before installing (Part 26 #4).
+
+CREATE VERTEX Person (PRIMARY_ID id STRING, user_id STRING) WITH primary_id_as_attribute="true"
+CREATE VERTEX Workspace (PRIMARY_ID id STRING) WITH primary_id_as_attribute="true"
+CREATE VERTEX Block (PRIMARY_ID id STRING, status STRING, access_mode STRING, storage_mode STRING, owner_id STRING) WITH primary_id_as_attribute="true"
+CREATE VERTEX Section (PRIMARY_ID id STRING) WITH primary_id_as_attribute="true"
+CREATE VERTEX Statement (PRIMARY_ID id STRING, status STRING) WITH primary_id_as_attribute="true"
+CREATE VERTEX Connection (PRIMARY_ID id STRING, revoked BOOL) WITH primary_id_as_attribute="true"
+CREATE VERTEX Card (PRIMARY_ID id STRING, expires_at INT, revoked BOOL) WITH primary_id_as_attribute="true"
+CREATE VERTEX Rule (PRIMARY_ID id STRING, visibility STRING, expires_at INT, embargo_until INT, partner_workspace_id STRING, purposes STRING) WITH primary_id_as_attribute="true"
+
+CREATE DIRECTED EDGE MEMBER_OF (FROM Person, TO Workspace, role STRING) WITH REVERSE_EDGE="HAS_MEMBER"
+CREATE DIRECTED EDGE SAID (FROM Person, TO Statement) WITH REVERSE_EDGE="SAID_BY"
+CREATE DIRECTED EDGE IN (FROM Statement, TO Block | FROM Section, TO Block) WITH REVERSE_EDGE="CONTAINS"
+CREATE DIRECTED EDGE OWNED_BY (FROM Block, TO Workspace) WITH REVERSE_EDGE="OWNS"
+CREATE DIRECTED EDGE GOVERNS (FROM Rule, TO Block) WITH REVERSE_EDGE="GOVERNED_BY"
+CREATE DIRECTED EDGE ALLOWS (FROM Rule, TO Connection) WITH REVERSE_EDGE="ALLOWED_BY"
+CREATE DIRECTED EDGE SHARES (FROM Card, TO Block) WITH REVERSE_EDGE="SHARED_IN"
+CREATE DIRECTED EDGE TO (FROM Card, TO Workspace) WITH REVERSE_EDGE="RECEIVES"
+CREATE DIRECTED EDGE OF (FROM Connection, TO Person) WITH REVERSE_EDGE="HAS_CONNECTION"
+CREATE DIRECTED EDGE IN_WS (FROM Connection, TO Workspace) WITH REVERSE_EDGE="WS_CONNECTION"
+
+CREATE GRAPH Embargo (*)
+
+USE GRAPH Embargo
+
+// Candidate blocks a connection can reach: own workspace (member) + unexpired, unrevoked cards to that workspace.
+CREATE QUERY allowed_items(STRING connection_id, INT now, STRING purpose) FOR GRAPH Embargo {
+  SetAccum<STRING> @@block_ids;
+  start = {Connection.*};
+  conn = SELECT c FROM start:c WHERE c.id == connection_id AND c.revoked == FALSE;
+  ws = SELECT w FROM conn:c -(IN_WS>)- Workspace:w;
+  own = SELECT b FROM ws:w -(OWNS>)- Block:b WHERE b.status == "active" AND b.storage_mode == "standard";
+  cards = SELECT cd FROM ws:w -(RECEIVES>)- Card:cd WHERE cd.revoked == FALSE AND (cd.expires_at == 0 OR cd.expires_at > now);
+  shared = SELECT b FROM cards:cd -(SHARES>)- Block:b WHERE b.status == "active";
+  cand = own UNION shared;
+  ok = SELECT b FROM cand:b -(GOVERNED_BY>)- Rule:r
+       WHERE (r.expires_at == 0 OR r.expires_at > now) AND (r.embargo_until == 0 OR r.embargo_until <= now)
+         AND (r.purposes == "" OR purpose != "")
+       ACCUM @@block_ids += b.id;
+  PRINT @@block_ids AS block_ids;
+}
+
+CREATE QUERY why_withheld(STRING connection_id, STRING item_id, INT now) FOR GRAPH Embargo {
+  start = {Block.*};
+  b = SELECT x FROM start:x WHERE x.id == item_id;
+  rules = SELECT r FROM b:x -(GOVERNED_BY>)- Rule:r;
+  PRINT b, rules;
+}
+
+CREATE QUERY exposure(STRING person_id) FOR GRAPH Embargo {
+  start = {Person.*};
+  p = SELECT x FROM start:x WHERE x.id == person_id;
+  stmts = SELECT s FROM p:x -(SAID>)- Statement:s WHERE s.status == "allowed" OR s.status == "team_only";
+  blocks = SELECT b FROM stmts:s -(IN>)- Block:b WHERE b.status == "active";
+  wss = SELECT w FROM blocks:b -(OWNED_BY>)- Workspace:w;
+  conns = SELECT c FROM wss:w -(WS_CONNECTION>)- Connection:c WHERE c.revoked == FALSE;
+  cards = SELECT cd FROM blocks:b -(SHARED_IN>)- Card:cd WHERE cd.revoked == FALSE;
+  PRINT conns, cards;
+}
+
+INSTALL QUERY allowed_items, why_withheld, exposure

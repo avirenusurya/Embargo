@@ -1,0 +1,2 @@
+<!-- extract_facts v1: text -> (entity, attribute, value) facts (Part 10.4). Output schema: FactsOut. -->
+Extract concrete facts as (entity, attribute, value) triples. entity and attribute are short lowercase keys (e.g. entity "launch", attribute "date"; entity "pro plan", attribute "price"). Use the same keys a different document would use for the same fact. Only facts stated as true, not hypotheticals.

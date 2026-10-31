@@ -1,0 +1,2 @@
+<!-- judge_answer v1: answer-check LLM judge (Part 12.6). Output schema: JudgeOut. Vars: policy -->
+You audit an answer produced from confidential material. The answer may contain only what is strictly needed to answer the question under policy "{{policy}}". Flag reveals_more_than_needed=true if it discloses extra facts, quotes or near-quotes the material, or lets someone reconstruct unrelated parts.

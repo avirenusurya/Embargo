@@ -1,0 +1,64 @@
+{
+  "name": "embargo",
+  "version": "1.0.0",
+  "description": "Embargo: shared, governed context for every AI tool your team uses (MCP server + API + workers).",
+  "type": "module",
+  "bin": {
+    "embargo-mcp": "./bin/embargo-mcp.mjs"
+  },
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "dev": "tsx watch src/main.ts",
+    "api": "EMBARGO_ROLE=api tsx src/main.ts",
+    "worker": "EMBARGO_ROLE=worker tsx src/main.ts",
+    "mcp": "tsx src/mcp/local.ts",
+    "migrate": "tsx src/db/migrate.ts",
+    "seed": "tsx scripts/seed.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "eval": "tsx src/eval/run.ts",
+    "chain:register-schema": "tsx scripts/register-schema.ts",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "tsx scripts/smoke.ts",
+    "test:local-mcp": "tsx scripts/local-mcp-test.ts",
+    "test": "tsx --test test/unit/*.test.ts test/security/*.test.ts test/integration/*.test.ts",
+    "test:unit": "tsx --test test/unit/*.test.ts",
+    "test:security": "tsx --test test/security/*.test.ts",
+    "test:integration": "tsx --test test/integration/*.test.ts",
+    "test:chain": "tsx scripts/chain-test.ts",
+    "verify-record": "tsx scripts/verify-record.ts"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
+    "playwright-core": "^1.64.1",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.13",
+    "@electric-sql/pglite-pgvector": "^0.0.14",
+    "@fastify/cookie": "^11.1.5",
+    "@fastify/static": "^10.1.8",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@mozilla/readability": "^0.6.0",
+    "@simplewebauthn/server": "^14.0.3",
+    "chrono-node": "^2.10.3",
+    "fastify": "^5.12.7",
+    "gsap": "^3.15.0",
+    "js-tiktoken": "^1.0.21",
+    "lenis": "^1.3.27",
+    "linkedom": "^0.18.14",
+    "mammoth": "^1.13.0",
+    "pg": "^8.23.1",
+    "tsx": "^4.23.15",
+    "unpdf": "^2.0.0",
+    "viem": "^2.57.13",
+    "zod": "^4.6.7"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

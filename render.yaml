@@ -1,0 +1,41 @@
+# Render Blueprint: Dashboard -> New -> Blueprint -> pick this repo. One web service runs the API, the MCP server,
+# the background workers, the website (/) and the app (/app), and seeds a demo workspace on first boot.
+# Free plan: set DATABASE_URL (Postgres 16 + pgvector, e.g. Neon). The embedded database needs more than the
+# plan's 512 MB and its disk is wiped on every deploy. Keep the service awake with cron-job.org (see README).
+services:
+  - type: web
+    name: embargoai
+    runtime: docker
+    plan: free
+    # Same region as the database: every request makes several queries, so a cross-region database is slow.
+    region: ohio
+    dockerfilePath: ./Dockerfile
+    dockerCommand: bash scripts/demo-start.sh
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # "demo" keeps developer sign-in on (needed for the seeded demo accounts). Use "production" for real data:
+      # it disables developer sign-in and requires every secret below plus email, KMS or LOCAL_MASTER_KEY, etc.
+      - key: NODE_ENV
+        value: demo
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: LOCAL_MASTER_KEY
+        generateValue: true
+      - key: RECORD_HMAC_GLOBAL_KEY
+        generateValue: true
+      # 0x-prefixed 32-byte hex key that signs records. Without a fixed key the free plan's wiped disk gives the
+      # server a new signer on every restart, and earlier records stop verifying.
+      - key: RELAYER_PRIVATE_KEY
+        sync: false
+      - key: KEY_PROVIDER
+        value: local
+      - key: CHAIN_ID
+        value: "84532"
+      # Public URL used for links, cookies and passkeys. With Vercel in front (vercel.json) use the Vercel URL.
+      - key: API_URL
+        value: https://embargoai.vercel.app
+      - key: DATABASE_URL
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
